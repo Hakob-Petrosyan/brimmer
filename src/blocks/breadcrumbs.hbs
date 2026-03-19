@@ -1,0 +1,9 @@
+<nav class="breadcrumbs-section width-container" aria-label="Хлебные крошки">
+    <ul class="breadcrumbs text-l resetListStyle u-flex u-align-center noneScrollbar">
+        <li><a href="/">Главная</a></li>
+        {{#if currentCategory}}
+            <li><a href="/">{{currentCategory}}</a></li>
+        {{/if}}
+        <li><span aria-current="page">{{currenPage}}</span></li>
+    </ul>
+</nav>

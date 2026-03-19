@@ -1,0 +1,186 @@
+@font-face {
+    font-family: 'Geist';
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url('/assets/fonts/Geist-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Geist';
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    src: url('/assets/fonts/Geist-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+    src: url('/assets/fonts/Inter_18pt-Italic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Nata Sans';
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url('/assets/fonts/NataSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Nata Sans';
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+    src: url('/assets/fonts/NataSans-Medium.woff2') format('woff2');
+}
+
+
+
+h1, h2, h3, h4, h5, h6, p {
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+}
+
+:root {
+    font-size: 16px;
+}
+
+
+.textAccent{
+    font-family: 'Nata Sans';
+    font-size: 3.25rem;
+    line-height: 90%;
+    letter-spacing: -0.02em;
+}
+
+h1,
+.h1 {
+    font-size: 3rem;
+    line-height: 90%;
+    letter-spacing: -0.02em;
+}
+
+h2,
+.h2 {
+    font-size: 1.625rem;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+}
+
+h3,
+.h3 {
+    font-size: 1.5rem;
+    line-height: 110%;
+    letter-spacing: normal;
+}
+
+h4,
+.h4 {
+    font-size: 1.25rem;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+}
+
+.text-l {
+    font-size: 1rem;
+    line-height: 120%;
+    letter-spacing: normal;
+}
+
+.text-l-italic {
+    font-family: 'Inter';
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 120%;
+    letter-spacing: normal;
+}
+
+.text-m {
+    font-size: 0.875rem;
+    line-height: 120%;
+    letter-spacing: normal;
+}
+
+.text_S {
+    font-size: 0.75rem;
+    line-height: 120%;
+    letter-spacing: normal;
+}
+
+.text-s-medium {
+    font-size: 0.75rem;
+    line-height: 120%;
+    font-weight: 600;
+    letter-spacing: normal;
+}
+
+.text-b-M{
+    font-family: 'Nata Sans';
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+}
+
+
+@media (max-width: 1240px) {
+
+    .textAccent{
+        font-size: 2rem;
+    }
+
+    h1,
+    .h1 {
+        font-size: 1.75rem;
+        letter-spacing: -0.02em;
+    }
+
+    h2,
+    .h2 {
+        font-size: 1.375rem;
+        letter-spacing: -0.02em;
+    }
+
+    h3,
+    .h3 {
+        font-size: 1.25rem;
+        letter-spacing: normal;
+    }
+
+    h4,
+    .h4 {
+        font-size: 1rem;
+        letter-spacing: -0.01em;
+    }
+
+    .text-l {
+        font-size: 0.875rem;
+    }
+
+    .text-l-italic {
+        font-size: 0.875rem;
+    }
+
+    .text-m {
+        font-size: 0.75rem;
+    }
+
+    .text_S {
+        font-size: 0.625rem;
+    }
+
+    .text-s-medium {
+        font-size: 0.625rem;
+    }
+
+    .text-b-M {
+        font-size: 0.75rem; /* 12px */
+        letter-spacing: 0.01em; /* 1% от 12px = 0.12px */
+    }
+}

@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Требуется авторизация"
+AuthUserFile /home/c107334/brimmer-hpa.thsdev.ru
+Require valid-user

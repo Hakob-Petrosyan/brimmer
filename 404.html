@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+{{> head
+title = '404'
+}}
+
+
+<body>
+{{> header}}
+
+
+<main>
+    {{> breadcrumbs
+    currenPage = '404'
+    }}
+
+    <section class="width-container u-flex">
+        <div class="error-content w-100 u-flex u-align-center u-justify-center" style="background-image: url('/assets/images/banners/404-error.webp')">
+            <div class="error-content__inner u-flex u-flex-col u-align-center">
+                <h1>Что-то не так...</h1>
+                <p class="error-content__text text-l color__coal">Мы уже ищем проблему. Попробуйте перезагрузить страницу или вернуться на главную</p>
+                <button class="error-content__btn btn-custom btn-black btn-xl w-100 text-b-M">НА ГЛАВНУЮ</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<section class="page-section">{{> footer}}</section>
+
+
+
+
+{{> scripts}}
+</body>
+</html>

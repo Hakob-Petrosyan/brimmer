@@ -1,0 +1,101 @@
+:root {
+    --color-white-30: rgba(255, 255, 255, 0.30);
+    --color-white: #FFFFFF;
+    --color-purity: #F9F9F9;
+    --color-silver-40: rgba(212, 212, 212, 0.40);
+    --color-silver: #D4D4D4;
+    --color-metallic: #A3A3A3;
+    --color-concrete: #737373;
+    --color-coal: #404040;
+    --color-night-40: rgba(10, 10, 10, 0.30);
+    --color-night: #0A0A0A;
+    --color-shine: #D9C9BA;
+    --color-red: #D03F33;
+
+
+    --color-blur-effect: rgb(175, 174, 174);
+
+    --bg-blur:rgb(10, 10, 10, 0.30);
+    --drop-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.12);
+}
+
+.color__white {
+    color: var(--color-white);
+}
+.color__concrete{
+    color: var(--color-concrete);
+}
+.color__coal{
+    color: var(--color-coal);
+}
+
+
+.bg__white{
+    background-color: var(--color-white);
+}
+.bg__night{
+    background-color: var(--color-night);
+}
+
+
+/*-------FLEX---------*/
+
+.u-flex {display: flex;}
+.u-flex-row {flex-direction: row;}
+.u-flex-col {flex-direction: column;}
+.u-flex-wrap {flex-wrap: wrap;}
+.u-flex-nowrap {flex-wrap: nowrap;}
+.u-justify-start {justify-content: flex-start;}
+.u-justify-center {justify-content: center;}
+.u-justify-end {justify-content: flex-end;}
+.u-justify-between {justify-content: space-between;}
+.u-align-start {align-items: flex-start;}
+.u-align-center {align-items: center;}
+.u-align-end {align-items: flex-end;}
+
+/* ---- GAP ----- */
+.u-gap-4 { gap: 0.25rem; }
+.u-gap-6 { gap: 0.375rem;}
+.u-gap-8 { gap: 0.5rem; }
+.u-gap-12 { gap: 0.75rem;}
+.u-gap-16 { gap: 1rem; }
+.u-gap-20 {gap: 1.25rem;}
+.u-gap-24 { gap: 1.5rem;}
+.u-gap-32 { gap: 2rem;}
+
+/*----- Radius ------*/
+.u-r-6 {border-radius: 0.375rem;}
+.u-r-8 {border-radius: 0.5rem;}
+.u-r-12 {border-radius: 0.75rem;}
+.u-r-16 {border-radius: 1rem;}
+
+
+.w-100 {width: 100%;}
+
+.mw-fitContent {
+    max-width: fit-content;
+}
+
+.mw-fitContent-100{
+    max-width: fit-content;
+}
+
+.u-relative {
+    position: relative;
+}
+
+.u-absolute {
+    position: absolute;
+}
+
+.u-spaceNowrap{
+    white-space: nowrap;
+}
+
+
+
+@media (max-width: 1220px) {
+    .mw-fitContent-100{
+        max-width: 100%;
+    }
+}
