@@ -30,11 +30,16 @@
 }
 
 
+
+
 .bg__white{
     background-color: var(--color-white);
 }
 .bg__night{
     background-color: var(--color-night);
+}
+.bg__purity{
+    background-color: var(--color-purity);
 }
 
 

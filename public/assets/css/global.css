@@ -111,20 +111,25 @@ address{
     scrollbar-width: none;
 }
 
+.hover-effects{
+    transition: background-color 300ms, color 300ms, border 300ms;
+}
+.hover-effects svg path{
+    transition: fill 30ms, stroke 300ms;
+}
 
-
-/*::placeholder {
-    color: red;
+::placeholder {
+    color: var(--color-metallic);
     opacity: 1;
 }
 
 :-ms-input-placeholder {
-    color: red;
+    color: var(--color-metallic);
 }
 
 ::-ms-input-placeholder {
-    color: red;
-}*/
+    color: var(--color-metallic);
+}
 
 
 

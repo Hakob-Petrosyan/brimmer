@@ -98,27 +98,105 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    const inputs = document.querySelectorAll('[data-input-mask="phone"]');
 
-/*
-function initTabs() {
-    document.querySelectorAll('[data-tabs-block]').forEach(tabsBlock => {
-        const panes = tabsBlock.querySelectorAll('[data-panes] [data-pane]');
-        const containers = tabsBlock.querySelectorAll('[data-container]');
-        panes.forEach((pane, index) => {
-            pane.addEventListener('click', () => {
-                panes.forEach(item => item.classList.remove('active'));
-                containers.forEach(container => container.classList.remove('active'));
-                pane.classList.add('active');
-                containers[index].classList.add('active');
+    // длины номеров для выбранных стран (без кода страны)
+    const phoneLengths = {
+        '7': 10,    // Россия/Казахстан
+        '374': 8,   // Армения
+        '375': 9,   // Беларусь
+    };
+
+    inputs.forEach(input => {
+        const iti = window.intlTelInput(input, {
+            initialCountry: "ru",
+            preferredCountries: ["ru", "am", "kz", "by"],
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/utils.js",
+            nationalMode: false,
+            separateDialCode: false,
+            autoPlaceholder: "off",
+        });
+
+        input._iti = iti;
+
+        let maxLength = 15; // дефолтное значение
+
+        function updateMaxLength() {
+            const dialCode = iti.getSelectedCountryData().dialCode;
+            maxLength = phoneLengths[dialCode] || 10;
+        }
+
+/*        function setDialCode() {
+            const dialCode = iti.getSelectedCountryData().dialCode;
+            input.value = `+${dialCode} `;
+            setTimeout(() => {
+                input.setSelectionRange(input.value.length, input.value.length);
             });
+        }*/
 
-            if (panes.length > 0 && containers.length > 0) {
-                panes[0].classList.add('active');
-                containers[0].classList.add('active');
+        function setPlaceholder() {
+            const dialCode = iti.getSelectedCountryData().dialCode;
+            input.placeholder = `+${dialCode} (___) ___-__-__`;
+        }
+
+        // init
+        updateMaxLength();
+        // setDialCode();
+        setPlaceholder();
+
+        input.addEventListener('countrychange', () => {
+            updateMaxLength();
+            // setDialCode();
+            setPlaceholder();
+        });
+
+        input.addEventListener('keydown', (e) => {
+            const dialCode = '+' + iti.getSelectedCountryData().dialCode;
+
+            if (
+                input.selectionStart <= dialCode.length &&
+                (e.key === 'Backspace' || e.key === 'Delete')
+            ) {
+                e.preventDefault();
             }
         });
+
+        input.addEventListener('input', () => {
+            const dialCode = '+' + iti.getSelectedCountryData().dialCode;
+            let value = input.value;
+
+            if (!value.startsWith(dialCode)) {
+                value = dialCode;
+            }
+
+            let numbers = value.slice(dialCode.length).replace(/\D/g, '');
+            numbers = numbers.slice(0, maxLength);
+
+            input.value = dialCode + numbers;
+            input.setSelectionRange(input.value.length, input.value.length);
+        });
     });
-}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
 function openCloseBlock() {
     const openBlockBtn = document.querySelectorAll('[data-open-block-btn]');
     openBlockBtn.forEach(openBtn => {
@@ -323,18 +401,7 @@ function initSliders() {
 }
 initSliders()
 
-document.addEventListener('focus', function (e) {
-    if (e.target.matches('input[data-phone-mask]') && typeof Inputmask !== 'undefined') {
-        if (!e.target.inputmask) {
-            Inputmask({
-                mask: "+7 (999) 999-99-99",
-                placeholder: "_",
-                showMaskOnHover: false,
-                clearIncomplete: true
-            }).mask(e.target);
-        }
-    }
-}, true);
+
 
 
 
