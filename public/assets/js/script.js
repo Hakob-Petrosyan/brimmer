@@ -88,13 +88,181 @@ function initTabs() {
     });
 }
 
+function initAnchors() {
+    const sections = document.querySelectorAll('[data-anchor]');
+    const links = document.querySelectorAll('.article-anchors a');
+
+    if (!sections.length || !links.length) return;
+
+    let isClickScrolling = false;
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            if (isClickScrolling) return;
+
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+
+                const current = entry.target.dataset.anchor;
+
+                links.forEach((link) => {
+                    link.classList.toggle(
+                        'active',
+                        link.dataset.link === current
+                    );
+                });
+            });
+        },
+        {
+            rootMargin: '-40% 0px -50% 0px',
+            threshold: 0
+        }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    links.forEach((link) => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const id = link.getAttribute('href')?.replace('#', '');
+            const target = document.getElementById(id);
+
+            if (!target) return;
+
+            isClickScrolling = true;
+
+            // ✅ СРАЗУ ставим active
+            links.forEach((linkItem) => {
+                linkItem.classList.toggle(
+                    'active',
+                    linkItem === link
+                );
+            });
+
+            const y =
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
+                window.innerHeight / 2 +
+                target.offsetHeight / 2;
+
+            window.scrollTo({
+                top: y,
+                behavior: 'smooth'
+            });
+
+            setTimeout(() => {
+                isClickScrolling = false;
+            }, 600);
+        });
+    });
+}
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     openHeaderMenu();
     mobileMenu()
     initHeaderScroll();
     initTabs()
+    initAnchors()
+
 })
 
+
+function initSliders() {
+    const sliderGroupItems = document.querySelectorAll('[data-slider-group-item]');
+    if (!sliderGroupItems.length) return;
+
+    sliderGroupItems.forEach(sliderItem => {
+        const {
+            sliderGroupItem,
+            spaceBetween,
+            spaceBetweenTablet,
+            spaceBetweenMobile,
+            slidesView,
+            slidesViewTablet,
+            slidesViewMobile,
+            grabCursor,
+            autoPlay,
+            slidesLoop,
+            reverseDirection,
+            slidesSpeed,
+            paginationClickable,
+            slidesDelay,
+            pagination,
+            paginationTablet,
+            paginationMobile,
+
+        } = sliderItem.dataset;
+
+        const isGrabCursor = grabCursor === 'true';
+        const isAutoPlay = autoPlay === 'true';
+        const isSlidesLoop = slidesLoop === 'true';
+        const isReverseDirection = reverseDirection === 'true';
+        const isPaginationClickable = paginationClickable === 'true';
+
+        const getPaginationType = () => {
+            const width = window.innerWidth;
+            if (width < 576) return paginationMobile || paginationTablet || pagination || 'bullets';
+            if (width < 992) return paginationTablet || pagination || 'bullets';
+            return pagination || 'bullets';
+        };
+
+        const paginationEl = `#swiper-pagination__${sliderGroupItem}`;
+
+        const swiperConfig = {
+            grabCursor: isGrabCursor,
+            loop: isSlidesLoop,
+            navigation: {
+                nextEl: `#toRight_${sliderGroupItem}`,
+                prevEl: `#toLeft_${sliderGroupItem}`,
+            },
+            breakpoints: {
+                300: {
+                    spaceBetween: parseFloat(spaceBetweenMobile) || 0,
+                    slidesPerView: slidesViewMobile === "auto"? 'auto': parseFloat(slidesViewMobile),
+                },
+                576: {
+                    spaceBetween: parseFloat(spaceBetweenTablet) || 0,
+                    slidesPerView: slidesViewTablet === "auto"? 'auto': parseFloat(slidesViewTablet),
+                },
+                992: {
+                    spaceBetween: parseFloat(spaceBetween) || 0,
+                    slidesPerView: slidesView === "auto"? 'auto': parseFloat(slidesView),
+                },
+            },
+            pagination: {
+                el: paginationEl,
+                clickable: isPaginationClickable,
+                type: getPaginationType(),
+                progressbarFillClass: 'swiper-pagination-progressbar-fill',
+                renderProgressbar(progressbarFillClass) {
+                    return `<span class="${progressbarFillClass}"></span>`;
+                },
+            },
+            speed: parseInt(slidesSpeed) || 1000,
+            autoplay: isAutoPlay ? {
+                delay: parseInt(slidesDelay) || 3000,
+                reverseDirection: isReverseDirection,
+            } : false,
+        };
+
+        const swiper = new Swiper(`#${sliderGroupItem}`, swiperConfig);
+
+        window.addEventListener('resize', () => {
+            const newType = getPaginationType();
+            if (swiper.params.pagination.type !== newType) {
+                swiper.params.pagination.type = newType;
+                swiper.pagination.destroy();
+                swiper.pagination.init();
+                swiper.pagination.render();
+                swiper.pagination.update();
+            }
+        });
+    });
+}
+initSliders()
 
 
 
@@ -307,99 +475,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 })
 
-function initSliders() {
-    const sliderGroupItems = document.querySelectorAll('[data-slider-group-item]');
-    if (!sliderGroupItems.length) return;
 
-    sliderGroupItems.forEach(sliderItem => {
-        const {
-            sliderGroupItem,
-            spaceBetween,
-            spaceBetweenTablet,
-            spaceBetweenMobile,
-            slidesView,
-            slidesViewTablet,
-            slidesViewMobile,
-            grabCursor,
-            autoPlay,
-            slidesLoop,
-            reverseDirection,
-            slidesSpeed,
-            paginationClickable,
-            slidesDelay,
-            paginationType,
-            paginationTypeTablet,
-            paginationTypeMobile,
-
-        } = sliderItem.dataset;
-
-        const isGrabCursor = grabCursor === 'true';
-        const isAutoPlay = autoPlay === 'true';
-        const isSlidesLoop = slidesLoop === 'true';
-        const isReverseDirection = reverseDirection === 'true';
-        const isPaginationClickable = paginationClickable === 'true';
-
-        const getPaginationType = () => {
-            const width = window.innerWidth;
-            if (width < 576) return paginationTypeMobile || paginationTypeTablet || paginationType || 'bullets';
-            if (width < 992) return paginationTypeTablet || paginationType || 'bullets';
-            return paginationType || 'bullets';
-        };
-
-        const paginationEl = `#swiper-pagination__${sliderGroupItem}`;
-
-        const swiperConfig = {
-            grabCursor: isGrabCursor,
-            loop: isSlidesLoop,
-            navigation: {
-                nextEl: `#toRight_${sliderGroupItem}`,
-                prevEl: `#toLeft_${sliderGroupItem}`,
-            },
-            breakpoints: {
-                300: {
-                    spaceBetween: parseFloat(spaceBetweenMobile) || 0,
-                    slidesPerView: slidesViewMobile === "auto"? 'auto': parseFloat(slidesViewMobile),
-                },
-                992: {
-                    spaceBetween: parseFloat(spaceBetweenTablet) || 0,
-                    slidesPerView: slidesViewTablet === "auto"? 'auto': parseFloat(slidesViewTablet),
-                },
-                1220: {
-                    spaceBetween: parseFloat(spaceBetween) || 0,
-                    slidesPerView: slidesView === "auto"? 'auto': parseFloat(slidesView),
-                },
-            },
-            pagination: {
-                el: paginationEl,
-                clickable: isPaginationClickable,
-                type: getPaginationType(),
-                progressbarFillClass: 'swiper-pagination-progressbar-fill',
-                renderProgressbar(progressbarFillClass) {
-                    return `<span class="${progressbarFillClass}"></span>`;
-                },
-            },
-            speed: parseInt(slidesSpeed) || 1000,
-            autoplay: isAutoPlay ? {
-                delay: parseInt(slidesDelay) || 3000,
-                reverseDirection: isReverseDirection,
-            } : false,
-        };
-
-        const swiper = new Swiper(`#${sliderGroupItem}`, swiperConfig);
-
-        window.addEventListener('resize', () => {
-            const newType = getPaginationType();
-            if (swiper.params.pagination.type !== newType) {
-                swiper.params.pagination.type = newType;
-                swiper.pagination.destroy();
-                swiper.pagination.init();
-                swiper.pagination.render();
-                swiper.pagination.update();
-            }
-        });
-    });
-}
-initSliders()
 
 
 

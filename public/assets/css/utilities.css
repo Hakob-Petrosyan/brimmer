@@ -97,6 +97,11 @@
     white-space: nowrap;
 }
 
+.u-overflowHidden{
+    overflow: hidden;
+}
+
+
 
 
 @media (max-width: 1220px) {
