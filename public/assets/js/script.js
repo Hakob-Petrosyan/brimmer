@@ -43,14 +43,29 @@ function mobileMenu(){
 function initHeaderScroll() {
     const header = document.getElementById('header');
     let lastScroll = 0;
+    let topTimer = null;
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.scrollY;
 
-        if (currentScroll > lastScroll && currentScroll > 50) {
+        if (topTimer) clearTimeout(topTimer);
+
+        topTimer = setTimeout(() => {
+            if (currentScroll <= 0) {
+                header.classList.add('at-top');
+                header.classList.remove('toTop');
+            } else {
+                header.classList.remove('at-top');
+            }
+        }, 100);
+
+        // Скрытие / показ (без задержки)
+        if (currentScroll > lastScroll && currentScroll > 0) {
             header.classList.add('hide');
+            header.classList.remove('toTop');
         } else {
             header.classList.remove('hide');
+            header.classList.add('toTop');
         }
 
         lastScroll = currentScroll;
@@ -158,6 +173,34 @@ function initAnchors() {
     });
 }
 
+function openCloseBlock() {
+    const buttons = document.querySelectorAll('[data-open-block-btn]');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const wrapper = btn.closest('[data-open-block-wrapper]');
+            const content = wrapper?.querySelector('[data-open-block]');
+            if (!wrapper || !content) return;
+
+            const isOpen = wrapper.classList.toggle('open');
+
+            if (isOpen) {
+                console.log('barev')
+                content.style.maxHeight = content.scrollHeight + 'px';
+            } else {
+                content.style.maxHeight = null;
+            }
+
+            if (btn.hasAttribute('data-change-text')) {
+                const openText = btn.dataset.openText || 'Показать ещё';
+                const closeText = btn.dataset.closeText || 'Скрыть';
+
+                btn.textContent = isOpen ? closeText : openText;
+            }
+        });
+    });
+}
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -166,6 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeaderScroll();
     initTabs()
     initAnchors()
+    openCloseBlock()
 
 })
 
@@ -269,7 +313,6 @@ initSliders()
 document.addEventListener('DOMContentLoaded', () => {
     const inputs = document.querySelectorAll('[data-input-mask="phone"]');
 
-    // длины номеров для выбранных стран (без кода страны)
     const phoneLengths = {
         '7': 10,    // Россия/Казахстан
         '374': 8,   // Армения
@@ -288,34 +331,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         input._iti = iti;
 
-        let maxLength = 15; // дефолтное значение
+        let maxLength = 15;
 
         function updateMaxLength() {
             const dialCode = iti.getSelectedCountryData().dialCode;
             maxLength = phoneLengths[dialCode] || 10;
         }
 
-/*        function setDialCode() {
-            const dialCode = iti.getSelectedCountryData().dialCode;
-            input.value = `+${dialCode} `;
-            setTimeout(() => {
-                input.setSelectionRange(input.value.length, input.value.length);
-            });
-        }*/
-
         function setPlaceholder() {
             const dialCode = iti.getSelectedCountryData().dialCode;
             input.placeholder = `+${dialCode} (___) ___-__-__`;
         }
 
-        // init
         updateMaxLength();
-        // setDialCode();
         setPlaceholder();
 
         input.addEventListener('countrychange', () => {
             updateMaxLength();
-            // setDialCode();
             setPlaceholder();
         });
 

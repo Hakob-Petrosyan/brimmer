@@ -28,6 +28,7 @@ body {
 
 main {
     flex: 1;
+    padding-top: 52px;
 }
 
 .page-section {
@@ -111,11 +112,38 @@ address{
     scrollbar-width: none;
 }
 
+
+
+.customScrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.customScrollbar::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: var(--color-silver);
+}
+
+.customScrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.customScrollbar::-webkit-scrollbar-button {
+    display: none;
+}
+
+@supports (-moz-appearance: none) {
+    .customScrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-silver) transparent;
+    }
+}
+
+
 .hover-effects{
     transition: background-color 300ms, color 300ms, border 300ms;
 }
 .hover-effects svg path{
-    transition: fill 30ms, stroke 300ms;
+    transition: fill 300ms, stroke 300ms;
 }
 
 ::placeholder {
@@ -187,6 +215,11 @@ input[type="number"]:focus {
         padding-left: 12px;
         padding-right: 12px;
     }
+
+    main{
+        padding-top: 48px;
+    }
+
     .page-section {
         margin-top: 4rem;
     }

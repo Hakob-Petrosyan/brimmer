@@ -31,8 +31,10 @@
         flex-direction: column;
         max-height: 48px;
         overflow: hidden;
-        transition: max-height 300ms;
+        background-color: var(--color-white);
+        transition:transform 0.3s ease, background-color 0.4s ease, max-height 300ms;
     }
+
     header.open{
         max-height: 100%;
     }
@@ -41,6 +43,10 @@
         padding-top: 6px;
         flex-direction: column;
         height: unset;
+    }
+
+    .home-page .header-inner{
+        background-color: transparent;
     }
 
     .mobile-menu-btn svg path {
@@ -110,15 +116,43 @@
         padding: 0 0 32px 0;
     }
 
-    main{
-        margin-top: 48px;
+    .home-page header.toTop  a.header__lang-link{
+        color: var(--color-metallic);
+    }
+    .home-page header.toTop a.header__lang-link.active{
+        color: var(--color-night);
     }
 
+    .home-page header.at-top .mobile-menu-btn svg path{
+        stroke: var(--color-white);
+    }
 
+    .home-page header.at-top.open .mobile-menu-btn svg path{
+        stroke: var(--color-night);
+    }
 
+    .home-page header.at-top.open{
+        background-color: var(--color-white);
+    }
 
+    .home-page header.at-top.open a{
+        color: var(--color-night);
+    }
+    .home-page header.at-top.open svg path {
+        fill: var(--color-night);
+    }
 
+    .home-top{
+        height: 640px;
+        background-position: center;
+        background-size: cover;
+        padding-top: 121px;
+        padding-bottom: 40px;
+    }
 
+    .home-top__btn{
+        margin-top: 12px;
+    }
 
 
 
@@ -133,6 +167,7 @@
     }
 
     /*END breadcrumbs*/
+
 
 
 
@@ -304,12 +339,145 @@
         padding-top: 12px;
     }
 
+    .about-promo__container{
+        margin-top: 32px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+    }
+    .about-promo__logo{
+        height: 26px;
+    }
+
+    .about-promo__logo-description{
+        height: 6px;
+    }
+    .about-promo__top{
+        gap: 16px;
+    }
+
+    .img-banner{
+        height: 400px;
+    }
+    .founder{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .brand-philosophy{
+        grid-template-columns: minmax(0, 1fr);
+        padding: 0 32px;
+    }
+    .brand-description__item{
+        gap:12px;
+    }
+
+    .img-banner{
+        width: calc(100% + 24px);
+        margin-left: -12px;
+    }
+    .reviews-card{
+        grid-template-columns: minmax(0, 1fr);
+        gap: 8px;
+    }
+    .reviews-img{
+        order: 1;
+    }
+    .reviews-content{
+        order: 0;
+        aspect-ratio: unset;
+        padding: 24px 16px 32px 12px;
+    }
+    .reviews-text{
+        margin-top: 12px;
+        padding: 24px 0 0 24px;
+        background-size: 24px 24px;
+        height: 260px;
+        flex: unset;
+    }
+
+    .reviews-top{
+        padding: 0 32px;
+        gap: 32px;
+    }
+
+    .intro__image-right{
+        display: none;
+    }
+    .intro__image-l {
+        grid-area: imageL;
+        aspect-ratio: 148/242;
+    }
+    .intro__image-s {
+        grid-area: imageS;
+        aspect-ratio: 204/268;
+    }
+    .intro__description{
+        grid-area:introDescription;
+        padding: 0 28px;
+    }
+    .intro__container{
+        grid-template-columns: 148fr 204fr;
+        gap: 32px 8px;
+        grid-template-areas:
+        'imageL imageS'
+        'introDescription introDescription';
+    }
+
+    .intro-description__inner{
+        max-width: 100%;
+    }
+
+    .section--bg{
+        padding: 56px 0;
+    }
+
+    .intro__text{
+        margin-top: 32px;
+    }
+    .intro__btn{
+        margin-top: 16px;
+      max-width: 100%;
+    }
+
+    .directions-section{
+        background-image: none;
+    }
+
+    .directions-container{
+        gap: 8px;
+    }
+    .direction-title{
+        margin-top: 8px;
+    }
+
+    .application-banner{
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .application-banner__image-round{
+        display: none;
+    }
+
+    .application-banner__actions{
+        margin-top: 24px;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .application-banner__content{
+        padding: 32px 24px;
+        max-width: 100%;
+    }
+
+    .application-banner__image{
+        height: 252px;
+        clip-path: ellipse(80% 70% at 50% 70%);
+        background-size: cover;
+        background-position: center;
+    }
 
 
-
-
-
-
+    .application-banner__subtitle{
+        margin-top: 12px;
+    }
 
 
 

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+{{> head
+title = 'О компании'
+}}
+
+
+<body>
+{{> header}}
+
+
+<main>
+
+    {{> breadcrumbs
+    currenPage = 'О компании'
+    }}
+
+    <section class="width-container">
+        {{> about-promo}}
+    </section>
+
+
+    {{> brand-philosophy}}
+
+
+    <section class="width-container page-section">
+        <div class="img-banner imgWrapper">
+            <img src="/assets/images/card-images/banner-1.webp" alt="banner">
+        </div>
+    </section>
+
+    {{> articles-slider
+    title='НАС ПУБЛИКУЮТ В СМИ'
+    subtitle='Уникальные идеи и стильные решения'
+    }}
+
+    {{> cases}}
+
+    {{> reviews-slider}}
+
+    {{> faq}}
+
+    {{> feedback}}
+</main>
+
+<section class="page-section">{{> footer}}</section>
+
+
+{{> scripts}}
+</body>
+</html>
