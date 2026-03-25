@@ -389,6 +389,10 @@
         grid-template-columns: minmax(0, 1fr);
         padding: 0 32px;
     }
+    .brand-philosophy__title{
+        border-left: none;
+        padding-left: 0;
+    }
     .brand-description__item{
         gap:12px;
     }
@@ -546,17 +550,27 @@
         margin-top: 48px;
     }
 
+    .contacts-container{
+        margin-top: 32px;
+    }
+    .map iframe {
+        height: 400px;
+    }
 
+    .contacts-for-partners{
+        margin-top: 24px;
+        padding-top: 24px;
+    }
 
-
-
-
-
-
-
-
-
-
+    .contacts-content{
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .contacts-details{
+        gap: 20px;
+    }
+    .map-section-top{
+        align-items: start;
+    }
 
 
     footer{
@@ -593,6 +607,33 @@
         margin-top: 32px;
         flex-direction: column;
         padding: 20px 0 16px;
+    }
+
+
+    .popup-content{
+        padding: 32px 24px;
+    }
+    .popup-subtitle,
+    .popup-send-ptn{
+        margin-top: 12px;
+    }
+    .popup-form__inputs{
+        margin-top: 24px;
+        gap: 8px;
+    }
+
+    .contact-form__select{
+        outline: none;
+    }
+
+    .popup-contacts{
+        flex-direction: column;
+        gap: 4px;
+        align-items: center;
+    }
+
+    .result-popup__ptn{
+        margin-top: 24px;
     }
 
 

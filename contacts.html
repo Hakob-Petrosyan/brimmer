@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+{{> head
+title = 'Контакты"'
+}}
+
+
+<body>
+{{> header}}
+
+
+<main>
+    {{> breadcrumbs
+    currenPage = 'Контакты"'
+    }}
+
+    <section class="width-container">
+        <h1>Контакты</h1>
+    </section>
+
+
+    <section class="contacts-container width-container">
+        <div class="contacts-main contacts-content">
+            <div class="text-m color__coal">
+                ОСНОВНЫЕ:
+            </div>
+
+            <div class="contacts-wrapper u-flex u-flex-col">
+                <a href="tel:+79858802813" class="contacts-item text-b-M">+7 (985) 880 28 13</a>
+                <a href="mailto:brimmer-family@email.ru" class="contacts-item text-b-M">brimmer-family@email.ru</a>
+                <p class="contacts-item text-b-M">г. Москва, ул. Тверская, 15, БЦ Гранд Плаза (м. Тверская)</p>
+            </div>
+
+            <div class="u-flex u-flex-col u-gap-12 text-m">
+                <span>ПН-ПТ: 10:00 — 19:00</span>
+                <span class="color__concrete">СБ-ВС: ВЫХОДНОЙ</span>
+            </div>
+        </div>
+
+        <div class="contacts-for-partners contacts-content">
+            <div class="text-m color__coal">
+                ДЛЯ ПАРТНЁРОВ:
+            </div>
+
+            <div class="contacts-details u-flex u-flex-col text-b-M">
+                <dl>
+                    <dt>ИНН:</dt>
+                    <dd>616122918539</dd>
+                </dl>
+                <dl>
+                    <dt>БИК:</dt>
+                    <dd>40802810252000000680</dd>
+                </dl>
+                <dl>
+                    <dt>ОГРНИП:</dt>
+                    <dd>312619331900051 ВЫДАНО 14.11.2012 Г.</dd>
+                </dl>
+                <dl>
+                    <dt>ЮРИДИЧЕСКИЙ АДРЕС:</dt>
+                    <dd>350080, Г. МОСКВА, УЛ. ИМ. ТЮЛЯЕВА, Д. 19, КОРП. 2, КВ. 37А</dd>
+                </dl>
+            </div>
+
+            <div class="contacts-details u-flex u-flex-col text-b-M">
+                <dl>
+                    <dt>Р/СЧ.:</dt>
+                    <dd>40802810252000000680</dd>
+                </dl>
+                <dl>
+                    <dt>К/СЧ.:</dt>
+                    <dd>30101810600000000602</dd>
+                </dl>
+                <dl>
+                    <dt>УЧРЕДИТЕЛЬ:</dt>
+                    <dd>ИП ИВАНОВ ИВАН ИВАНОВИЧ</dd>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+    <section class="width-container page-section">
+        <div class="map-section-top section-top u-flex u-align-center u-justify-between u-gap-8">
+            <h2>ПРИХОДИТЕ В ГОСТИ!</h2>
+            <p class="text-m color__concrete">У нас уютный офис</p>
+        </div>
+
+        <div class="map" id="mapWrapper">
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A139ca9a8b642dd678d33a20f497a7c80eea37bfab7060124aad31e893a7af5dd&amp;source=constructor"  height="500" frameborder="0"></iframe>
+        </div>
+
+    </section>
+
+
+    {{> feedback}}
+</main>
+
+<section class="page-section">{{> footer}}</section>
+
+{{> popUps}}
+
+{{> scripts}}
+</body>
+</html>

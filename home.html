@@ -154,7 +154,12 @@ title = 'Главная'
                 <p class="application-banner__subtitle text-l">Оставьте заявку на создание уникального дизайна</p>
 
                 <div class="application-banner__actions u-flex">
-                    <button class="application-actions__btn application-actions--application bg__white hover-effects">
+                    <button class="application-actions__btn application-actions--application bg__white hover-effects"
+                            data-open-popup="request-popup"
+                            data-popup-set-title = 'ГОТОВЫ НАЧАТЬ СВОЙ ПРОЕКТ ВМЕСТЕ С BRIMMER?'
+                            data-popup-set-subtitle = 'Давайте обсудим проект, уделяя внимание деталям и срокам, а также рассчитаем индивидуальную стоимость проектирования и реализации'
+                            data-popup-set-button-text = 'ОСТАВИТЬ ЗАЯВКУ'
+                    >
                         Обсудить проект
                     </button>
                     <a href=""
@@ -195,6 +200,9 @@ title = 'Главная'
 </main>
 
 <section class="page-section">{{> footer}}</section>
+
+
+{{> popUps}}
 
 
 {{> scripts}}

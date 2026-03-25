@@ -78,31 +78,6 @@ document.addEventListener('click', (event) => {
     toggleMenu()
 })
 
-function initTabs() {
-    document.querySelectorAll('[data-tabs-block]').forEach(block => {
-        const tabs = block.querySelectorAll('[data-pane]');
-        const contents = block.querySelectorAll('[data-container]');
-
-        if (!tabs.length || !contents.length) return;
-
-        tabs[0].classList.add('active');
-        contents[0].classList.add('active');
-
-        block.addEventListener('click', (e) => {
-            const tab = e.target.closest('[data-pane]');
-            if (!tab) return;
-
-            const index = [...tabs].indexOf(tab);
-
-            tabs.forEach(t => t.classList.remove('active'));
-            contents.forEach(c => c.classList.remove('active'));
-
-            tab.classList.add('active');
-            contents[index]?.classList.add('active');
-        });
-    });
-}
-
 function initAnchors() {
     const sections = document.querySelectorAll('[data-anchor]');
     const links = document.querySelectorAll('.article-anchors a');
@@ -229,16 +204,139 @@ function initFancybox(){
     });
 }
 
+function initMapScrollEvents() {
+    const mapWrapper = document.getElementById('mapWrapper');
+    if (!mapWrapper) return
+    const map = mapWrapper.querySelector('iframe');
+
+    map?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        map.style.pointerEvents = 'auto';
+    });
+
+    mapWrapper.addEventListener('click', (e) => {
+        if (e.target !== map) {
+            map.style.pointerEvents = 'none';
+        }
+    });
+}
+
+
+
+function resetScrollBody() {
+    const popupOverlay = document.getElementById('popupOverlay');
+    popupOverlay.classList.remove('active');
+    document.body.classList.remove('popup-open');
+}
+function stopScrollBody(mobileMenu) {
+    const popupOverlay = document.getElementById('popupOverlay');
+    document.body.classList.add('popup-open');
+    popupOverlay.classList.add('active');
+    popupOverlay.focus();
+}
+
+function closePopUp(){
+    const popups = document.querySelectorAll('[data-popup]');
+    popups.forEach(popup => {
+        popup.classList.remove('active');
+    })
+
+    resetScrollBody()
+}
+function openPopUp() {
+    const openPopupButtons = document.querySelectorAll('[data-open-popup]');
+    openPopupButtons.forEach(openBtn => {
+        openBtn.addEventListener('click', () => {
+            const popupType = openBtn.dataset.openPopup;
+            const currentPopUp = document.getElementById(`${popupType}`)
+            currentPopUp.classList.add('active');
+
+
+            const popupGetTitle = currentPopUp.querySelector('[data-popup-get-title]');
+            const popupGetSubTitle = currentPopUp.querySelector('[data-popup-get-subtitle]');
+            const popupGetButtonText = currentPopUp.querySelector('[data-popup-get-button-text]');
+
+            console.log(openBtn.dataset.popupSetTitle)
+
+
+            if (popupGetTitle){
+                popupGetTitle.innerText = openBtn.dataset.popupSetTitle;
+                popupGetSubTitle.innerText = openBtn.dataset.popupSetSubtitle
+                popupGetButtonText.innerText = openBtn.dataset.popupSetButtonText;
+            }
+            stopScrollBody()
+        });
+    })
+
+    const closePopupBtn = document.querySelectorAll('[data-close-popup]');
+    closePopupBtn.forEach(closeBtn => {
+        closeBtn.addEventListener('click', (e) => {
+            const popup = e.target.closest('[data-popup]');
+            popup.classList.remove('active');
+            resetScrollBody()
+        })
+    })
+}
+function closeByESC() {
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape'){
+            closePopUp()
+        }
+    });
+}
+function closeByOverlay() {
+    const popupOverlay = document.getElementById('popupOverlay');
+    popupOverlay?.addEventListener('click', (e) => {
+        if (e.target === popupOverlay) {
+            closePopUp()
+        }
+    });
+}
+
+function initCustomSelect(){
+    document.querySelectorAll('[data-custom-select]').forEach(select => {
+        const trigger = select.querySelector('[data-custom-select-trigger]');
+        const valueSpan = select.querySelector('[data-custom-select-value]');
+        const options = select.querySelectorAll('[data-custom-select-option]');
+
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            select.classList.toggle('open');
+        });
+
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                options.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                valueSpan.textContent = option.textContent;
+                select.classList.remove('open');
+            });
+        });
+
+        document.addEventListener('click', () => {
+            select.classList.remove('open');
+        });
+    });
+
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
     openHeaderMenu();
     mobileMenu()
     initHeaderScroll();
-    initTabs()
     initAnchors()
     openCloseBlock()
     checkHeight()
     initFancybox()
+    initMapScrollEvents()
+
+
+    openPopUp()
+    closeByESC()
+    closeByOverlay()
+
+    initCustomSelect()
 })
 
 
@@ -409,142 +507,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-function openCloseBlock() {
-    const openBlockBtn = document.querySelectorAll('[data-open-block-btn]');
-    openBlockBtn.forEach(openBtn => {
-        openBtn?.addEventListener('click', (event) => {
-            const openBlockWrapper = event.target.closest('[data-open-block-wrapper]');
-            const openingBlock = openBlockWrapper.querySelector('[data-open-block]');
-            const hasChangeText = openBtn.hasAttribute('data-change-btn-text');
-
-            openBlockWrapper.classList.toggle('open');
-            if (openingBlock.style.maxHeight) {
-                openingBlock.removeAttribute('style');
-                if (hasChangeText) {
-                    openBtn.textContent = 'Показать еще';
-                }
-            } else {
-                openingBlock.style.maxHeight = openingBlock.scrollHeight + 'px';
-                if (hasChangeText) {
-                    openBtn.textContent = 'Скрыть';
-                }
-            }
-        })
-    })
-}
-function stopScrollBody(mobileMenu) {
-    const popupOverlay = document.getElementById('popupOverlay');
-    document.body.classList.add('popup-open');
-    popupOverlay.classList.add('active');
-    popupOverlay.focus();
-}
-function resetScrollBody() {
-    const popupOverlay = document.getElementById('popupOverlay');
-    popupOverlay.classList.remove('active');
-    document.body.classList.remove('popup-open');
-}
-function closePopUp(){
-    const popups = document.querySelectorAll('[data-popup]');
-    popups.forEach(popup => {
-        popup.classList.remove('active');
-    })
-    resetPopupReviews()
-    resetScrollBody()
-}
-function openPopUp() {
-    const openPopupButtons = document.querySelectorAll('[data-open-popup]');
-    openPopupButtons.forEach(openBtn => {
-        openBtn.addEventListener('click', () => {
-            const popupType = openBtn.dataset.openPopup;
-            const currentPopUp = document.getElementById(`${popupType}`)
-            currentPopUp.classList.add('active');
-
-
-            const popupGetTitle = currentPopUp.querySelector('[data-popup-get-title]');
-            const popupGetButtonText = currentPopUp.querySelector('[data-popup-get-button-text]');
-
-            if (popupGetTitle){
-                popupGetTitle.innerText = openBtn.dataset.popupSetTitle;
-                popupGetButtonText.innerText = openBtn.dataset.popupSetTitle;
-            }
-
-
-            stopScrollBody()
-            closeAllMenu()
-        });
-    })
-
-    const closePopupBtn = document.querySelectorAll('[data-close-popup]');
-    closePopupBtn.forEach(closeBtn => {
-        closeBtn.addEventListener('click', (e) => {
-            const popup = e.target.closest('[data-popup]');
-            popup.classList.remove('active');
-            resetScrollBody()
-        })
-    })
-}
-function closeByESC() {
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape'){
-            closePopUp()
-        }
-    });
-}
-function closeByOverlay() {
-    const popupOverlay = document.getElementById('popupOverlay');
-    popupOverlay?.addEventListener('click', (e) => {
-        if (e.target === popupOverlay) {
-            closePopUp()
-        }
-    });
-}
-function initFancybox(){
-    Fancybox.bind("[data-fancybox='certificates-gallery']", {
-        Thumbs: {
-            autoStart: true,
-        },
-    });
-}
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-
-    initTabs()
-    openCloseBlock()
-    openPopUp()
-    closeByESC()
-    closeByOverlay()
-    initFancybox()
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/

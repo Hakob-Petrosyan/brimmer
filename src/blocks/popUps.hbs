@@ -1,0 +1,155 @@
+<div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle"
+     tabindex="-1"></div>
+
+<div class="popup" id="request-popup" data-popup>
+    <div class="popup-content bg__purity u-relative" tabindex="0">
+        <button type="button" class="popup-close-btn u-absolute btn-custom bg__white" aria-label="Закрыть попап" data-close-popup>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18" stroke="#0A0A0A" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
+                <path d="M6 6L18 18" stroke="#0A0A0A" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+
+        <form class="popup__form  ">
+            <div class="popup__top">
+                <h2 data-popup-get-title></h2>
+
+                <p class="popup-subtitle text-l color__coal" data-popup-get-subtitle></p>
+            </div>
+
+            <div class="popup-form__inputs u-flex u-flex-col">
+                <input class="contact-form__input w-100 text-b-M" type="text" placeholder="Ваше имя" required>
+
+                <input class="contact-form__input contact-form__input-phone  w-100 text-b-M" type="tel" id="phone"  required data-input-mask="phone">
+
+                <input class="contact-form__input w-100 text-b-M" type="email" placeholder="Email (необязательно)" required>
+            </div>
+
+            <button type="submit" class="popup-send-ptn btn-custom btn-black btn-xl w-100 text-b-M" data-popup-get-button-text></button>
+
+            <p class="popup-button-info-text text-m">
+                <span class="color__concrete">Нажимая на кнопку, вы соглашаетесь на</span>
+                <a href="">обработку ваших персональных данных</a>
+                <span class="color__concrete">и принимаете</span> <a href="">условия политики конфиденциальности.</a>
+                Ваши контактные данные не подлежат разглашению.
+                <a href="/privacy-policy.html" class="link-privacy">политикой конфиденциальности.</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+<div class="popup" id="service-popup" data-popup>
+    <div class="popup-content bg__purity u-relative" tabindex="0">
+        <button type="button" class="popup-close-btn u-absolute btn-custom bg__white" aria-label="Закрыть попап" data-close-popup>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18" stroke="#0A0A0A" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
+                <path d="M6 6L18 18" stroke="#0A0A0A" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+
+        <form class="popup__form  ">
+            <div class="popup__top">
+                <h2 data-popup-get-title></h2>
+
+                <p class="popup-subtitle text-l color__coal" data-popup-get-subtitle></p>
+            </div>
+
+            <div class="popup-form__inputs u-flex u-flex-col">
+                <input class="contact-form__input w-100 text-b-M" type="text" placeholder="Ваше имя" required>
+
+                <input class="contact-form__input contact-form__input-phone  w-100 text-b-M" type="tel" id="phone"  required data-input-mask="phone">
+
+
+                <div class="custom-select text-b-M" data-custom-select>
+                    <div class="custom-select__trigger cursorPointer contact-form__input u-flex u-justify-between bg__white" data-custom-select-trigger>
+                        <span class="custom-select__value" data-custom-select-value>Дизайн-проект «Под ключ»</span>
+                        <svg class="custom-select__arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M13 6L8 11L3 6" stroke="#0A0A0A" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <div class="custom-select__dropdown bg__white u-absolute ">
+                        <div class="custom-select__option cursorPointer" data-custom-select-option="design">Дизайн-проект «Под ключ»</div>
+                        <div class="custom-select__option cursorPointer" data-custom-select-option="accompaniment">Авторское сопровождение</div>
+                        <div class="custom-select__option cursorPointer" data-custom-select-option="decor">Декорирование и хоумстейджинг</div>
+                    </div>
+                </div>
+
+
+                <input class="contact-form__input w-100 text-b-M" type="email" placeholder="Email (необязательно)" required>
+            </div>
+
+            <button type="submit" class="popup-send-ptn btn-custom btn-black btn-xl w-100 text-b-M" data-popup-get-button-text></button>
+
+            <p class="popup-button-info-text text-m">
+                <span class="color__concrete">Нажимая на кнопку, вы соглашаетесь на</span>
+                <a href="">обработку ваших персональных данных</a>
+                <span class="color__concrete">и принимаете</span> <a href="">условия политики конфиденциальности.</a>
+                Ваши контактные данные не подлежат разглашению.
+                <a href="/privacy-policy.html" class="link-privacy">политикой конфиденциальности.</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+<div class="popup" id="success-popup" data-popup>
+    <div class="popup-content bg__purity u-relative" tabindex="0">
+        <button type="button" class="popup-close-btn u-absolute btn-custom bg__white" aria-label="Закрыть попап" data-close-popup>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18" stroke="#0A0A0A" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
+                <path d="M6 6L18 18" stroke="#0A0A0A" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+        <div class="u-flex u-align-center u-gap-6 text_S color__concrete">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9922 4.49805C12.4963 4.49805 12.9924 4.62508 13.4346 4.86719C13.8766 5.10925 14.2509 5.45822 14.5225 5.88281C15.0166 5.77172 15.5311 5.78771 16.0176 5.92871C16.5039 6.06972 16.9466 6.33142 17.3047 6.68945C17.6627 7.04748 17.9244 7.49028 18.0654 7.97656C18.2064 8.46298 18.2224 8.97757 18.1113 9.47168C18.536 9.74324 18.8858 10.1174 19.1279 10.5596C19.37 11.0017 19.4961 11.4979 19.4961 12.002C19.4961 12.506 19.37 13.0022 19.1279 13.4443C18.8858 13.8865 18.536 14.2607 18.1113 14.5322C18.2219 15.0255 18.2061 15.5388 18.0654 16.0244C17.9248 16.51 17.6638 16.9527 17.3066 17.3105C16.9496 17.6683 16.5077 17.9296 16.0225 18.0713C15.5371 18.213 15.0239 18.2297 14.5303 18.1201C14.2591 18.5465 13.8843 18.8984 13.4414 19.1416C12.9986 19.3847 12.5013 19.5117 11.9961 19.5117C11.4909 19.5117 10.9936 19.3847 10.5508 19.1416C10.1079 18.8984 9.73312 18.5465 9.46191 18.1201C8.96864 18.2306 8.45529 18.2158 7.96973 18.0752C7.48431 17.9346 7.04237 17.6733 6.68457 17.3164C6.32666 16.9592 6.06452 16.5166 5.92285 16.0312C5.78127 15.546 5.76447 15.0326 5.87402 14.5391C5.44605 14.2682 5.09291 13.8939 4.84863 13.4502C4.60443 13.0066 4.47658 12.5083 4.47656 12.002C4.47656 11.4956 4.60448 10.9973 4.84863 10.5537C5.09291 10.11 5.44605 9.73471 5.87402 9.46387C5.76451 8.97034 5.7812 8.45697 5.92285 7.97168C6.06455 7.48643 6.32674 7.04458 6.68457 6.6875C7.04237 6.33055 7.48428 6.06934 7.96973 5.92871C8.45524 5.7881 8.96868 5.77232 9.46191 5.88281C9.73337 5.45826 10.1079 5.10928 10.5498 4.86719C10.9919 4.62513 11.4882 4.49809 11.9922 4.49805ZM11.2383 12.3086L9.7373 10.8066L8.54297 12.001L11.2383 14.6982L15.4365 10.5L14.2422 9.30566L11.2383 12.3086Z" fill="#737373"/>
+                </svg>
+                ДАННЫЕ УСПЕШНО ОТПРАВЛЕНЫ
+            </div>
+
+        <div class="popup__top result-popup__top popup__top color__coal">
+                <h2>МЫ ПОЛУЧИЛИ ВАШУ ЗАЯВКУ!</h2>
+
+                <p class="popup-subtitle text-l color__coal">
+                    Спасибо, что выбрали нас. Наши менеджеры скоро свяжутся с вами для обсуждения деталей.
+                </p>
+            </div>
+
+        <a href="/" class="result-popup__ptn btn-custom btn-black btn-xl w-100 text-b-M">ВЕРНУТЬСЯ НА ГЛАВНУЮ</a>
+    </div>
+</div>
+
+<div class="popup" id="error-popup" data-popup>
+    <div class="popup-content bg__purity u-relative" tabindex="0">
+        <button type="button" class="popup-close-btn u-absolute btn-custom bg__white" aria-label="Закрыть попап" data-close-popup>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18" stroke="#0A0A0A" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
+                <path d="M6 6L18 18" stroke="#0A0A0A" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+        <div class="u-flex u-align-center u-gap-6 text_S color__concrete">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9961 4.49805C16.1395 4.49805 19.499 7.85655 19.499 12C19.499 16.1435 16.1395 19.502 11.9961 19.502C7.85284 19.5017 4.49414 16.1433 4.49414 12C4.49415 7.8567 7.85284 4.49828 11.9961 4.49805ZM11.9932 10.8066L9.74219 8.55566L8.54883 9.74902L10.7998 12L8.54883 14.251L9.74219 15.4443L11.9932 13.1934L14.2441 15.4443L15.4375 14.251L13.1865 12L15.4375 9.74902L14.2441 8.55566L11.9932 10.8066Z" fill="#737373"/>
+            </svg>
+            ПРОИЗОШЛА ОШИБКА
+        </div>
+
+        <div class="popup__top result-popup__top popup__top color__coal">
+            <h2>ЧТО-ТО ПОШЛО НЕ ТАК...</h2>
+
+            <p class="popup-subtitle text-l color__coal">
+                Заявку не удалось отправить. Пожалуйста, попробуйте снова. Если проблема не решится, свяжитесь с нами любым удобным для вас способом.
+            </p>
+        </div>
+
+        <button class="result-popup__ptn btn-custom btn-black btn-xl w-100 text-b-M" aria-label="Закрыть попап" data-close-popup>Попробовать ещё</button>
+
+        <div class="popup-contacts u-flex u-justify-center">
+            <a href="tel:+79858802813" class="contacts-item text-b-M">+7 (985) 880 28 13</a>
+            <a href="mailto:brimmer-family@email.ru" class="contacts-item text-b-M">brimmer-family@email.ru</a>
+        </div>
+    </div>
+</div>
