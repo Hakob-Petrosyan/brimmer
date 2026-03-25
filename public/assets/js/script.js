@@ -185,7 +185,6 @@ function openCloseBlock() {
             const isOpen = wrapper.classList.toggle('open');
 
             if (isOpen) {
-                console.log('barev')
                 content.style.maxHeight = content.scrollHeight + 'px';
             } else {
                 content.style.maxHeight = null;
@@ -201,6 +200,34 @@ function openCloseBlock() {
     });
 }
 
+function checkHeight(){
+    const blockHeight = document.querySelectorAll('[data-block-height]');
+    if (blockHeight) {
+        for (let i = 0; i < blockHeight.length; i++) {
+            if (blockHeight[i].scrollHeight > blockHeight[i].clientHeight) {
+                if ( !blockHeight[i].closest('[data-block-height-wrapper]').classList.contains('show-btn')){
+                    blockHeight[i].closest('[data-block-height-wrapper]').classList.add('show-btn');
+                }
+
+            } else {
+                blockHeight[i].closest('[data-block-height-wrapper]').classList.remove('show-btn');
+            }
+        }
+    }
+}
+
+function handleResize() {
+    checkHeight()
+}
+window.addEventListener("resize", handleResize);
+
+function initFancybox(){
+    Fancybox.bind("[data-fancybox]", {
+        Thumbs: {
+            autoStart: true,
+        },
+    });
+}
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -210,7 +237,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initTabs()
     initAnchors()
     openCloseBlock()
-
+    checkHeight()
+    initFancybox()
 })
 
 

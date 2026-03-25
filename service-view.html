@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+{{> head
+title = 'Дизайн-проект "Под ключ"'
+}}
+
+
+<body>
+{{> header}}
+
+
+<main>
+    {{> breadcrumbs
+    currentCategory='Услуги'
+    currenPage = 'Дизайн-проект "Под ключ"'
+    }}
+
+    <section class="view-top width-container">
+        <div class="view-top-banner imgWrapper">
+                <img src="/assets/images/banners/service-image.webp" alt="service image">
+            </div>
+        <div class="view-container">
+            <div class="text-m color__coal">УСЛУГА</div>
+            <div class="view-content" data-open-block-wrapper data-block-height-wrapper>
+                <h1>Дизайн-проект «Под ключ»</h1>
+
+                <div class="view-dynamic-content text-l" data-open-block data-block-height>
+                    <p>
+                        Мы верим, что хорошо продуманный
+                        интерьер — это стратегический инструмент.
+                        Он не только поддерживает задачи бизнеса,
+                        но и создаёт эмоциональную связь: с сотрудниками,
+                        с клиентами, с партнёрами.
+                    </p>
+                    <br>
+                    <p>
+                        Это не просто офис, а площадка для
+                        реализации ваших бизнес-идей.
+                        Здесь зарождаются эмоции клиентов, и каждый
+                        элемент влияет на их впечатления, эффективность
+                        и успех. Клиент, который чувствует заботу в каждой
+                        детали — от удобства кресел до логики движения по
+                        пространству — возвращается снова и приводит с собой других.
+                    </p>
+                </div>
+
+                <button class="red-more-btn text-b-M color__concrete btn-custom" data-open-block-btn data-change-text>
+                    Читать полностью
+                </button>
+            </div>
+            <div class="view-aside u-flex u-flex-col">
+                <ul class="view-list resetListStyle u-flex u-flex-col text-b-M">
+                    <li>ДО 50М²: 9500 РУБ/М²</li>
+                    <li>50—100 М²: 8500 РУБ/М²</li>
+                    <li>100—300 М²: 7500 РУБ/М²</li>
+                    <li>СВЫШЕ 300 М²: ИНДИВИДУАЛЬНЫЙ РАСЧЁТ</li>
+                </ul>
+
+                <button class="get-service-btn btn-custom u-flex u-align-center u-gap-4 text-b-M">
+                    Заказать услугу
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M16 8L20 12L16 16" stroke="#0A0A0A" stroke-width="1.5"/>
+                        <path d="M4 12L20 12" stroke="#0A0A0A" stroke-width="1.5"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    {{> stages-work}}
+
+    {{> cases}}
+
+    {{> reviews-slider}}
+
+    {{> faq}}
+
+    {{> feedback}}
+</main>
+
+<section class="page-section">{{> footer}}</section>
+
+
+{{> scripts}}
+</body>
+</html>

@@ -284,11 +284,99 @@ header.toTop{
 .faq-question__icon{
     min-width: 24px;
 }
-
-
 /*END home*/
 
+/*service*/
 
+.view-top-banner{
+    aspect-ratio: 1400/512;
+}
+
+.view-container{
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: minmax(180px, 220px) 1fr minmax(280px, 338px);
+    gap: 16px;
+}
+
+.view-list{
+    gap: 12px;
+}
+
+.view-aside{
+    gap: 16px;
+}
+
+.get-service-btn{
+    border-bottom: 1px solid var(--color-night);
+    width: fit-content;
+}
+.view-content{
+    padding-right: 96px;
+}
+.view-dynamic-content{
+    margin-top: 32px;
+    max-height: 198px;
+    overflow: hidden;
+    transition: max-height 300ms;
+}
+
+.red-more-btn{
+    margin-top: 20px;
+    text-transform: uppercase;
+    display: none;
+}
+
+.show-btn .red-more-btn{
+    display: flex;
+}
+
+.case-dynamic-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 928px;
+}
+
+.case-dynamic-content .gallery-image{
+    display: flex;
+    height: 100%;
+    aspect-ratio: 0.74;
+}
+
+.case-dynamic-content .gallery-image:nth-of-type(4n + 1) {
+    grid-column: 1 / -1;
+    aspect-ratio: 1.49;
+}
+
+.case-dynamic-content h2,
+.case-dynamic-content h3,
+.case-dynamic-content h4,
+.case-dynamic-content h5{
+    grid-column: 1 / -1;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.case-dynamic-content h2:not(:first-child),
+.case-dynamic-content h3:not(:first-child),
+.case-dynamic-content h4:not(:first-child),
+.case-dynamic-content h5:not(:first-child){
+    margin-top: 104px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*END service*/
 
 /*blog*/
 .filter-btn{

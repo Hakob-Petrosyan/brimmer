@@ -16,6 +16,12 @@
     .promo__feature-card{
         padding: 20px 8px 24px;
     }
+    .view-container{
+        grid-template-columns: minmax(100px, 150px) 1fr minmax(180px, 220px);
+    }
+    .view-content{
+        padding-right:0;
+    }
 
 }
 
@@ -32,8 +38,17 @@
         max-height: 48px;
         overflow: hidden;
         background-color: var(--color-white);
-        transition:transform 0.3s ease, background-color 0.4s ease, max-height 300ms;
+        transition:transform 0.3s ease, background-color 0.3s ease, max-height 300ms;
     }
+
+    .home-page header{
+        background-color: transparent;
+    }
+
+    .home-page header svg path{
+        stroke: var(--color-white);
+    }
+
 
     header.open{
         max-height: 100%;
@@ -116,6 +131,11 @@
         padding: 0 0 32px 0;
     }
 
+    .home-page header.toTop{
+        background-color: var(--color-white);
+    }
+
+
     .home-page header.toTop  a.header__lang-link{
         color: var(--color-metallic);
     }
@@ -127,6 +147,7 @@
         stroke: var(--color-white);
     }
 
+    .home-page header.toTop .mobile-menu-btn svg path,
     .home-page header.at-top.open .mobile-menu-btn svg path{
         stroke: var(--color-night);
     }
@@ -138,6 +159,7 @@
     .home-page header.at-top.open a{
         color: var(--color-night);
     }
+
     .home-page header.at-top.open svg path {
         fill: var(--color-night);
     }
@@ -153,6 +175,7 @@
     .home-top__btn{
         margin-top: 12px;
     }
+
 
 
 
@@ -478,6 +501,51 @@
     .application-banner__subtitle{
         margin-top: 12px;
     }
+
+    .view-top-banner{
+        aspect-ratio: 336/400;
+    }
+    .view-container{
+        margin-top: 32px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .view-dynamic-content{
+        margin-top: 20px;
+        max-height: 150px;
+    }
+
+    .case-dynamic-content {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .case-dynamic-content .gallery-image{
+        max-width: 272px;
+        margin: 0 auto;
+    }
+
+    .case-dynamic-content .gallery-image:nth-of-type(4n + 1) {
+        grid-column: 1 / -1;
+        aspect-ratio: 1.49;
+        width: calc(100% + 24px);
+        margin-left: -12px;
+        max-width: unset;
+    }
+
+    .case-dynamic-content h2,
+    .case-dynamic-content h3,
+    .case-dynamic-content h4,
+    .case-dynamic-content h5{
+        margin-bottom: 16px;
+    }
+    .case-dynamic-content h2:not(:first-child),
+    .case-dynamic-content h3:not(:first-child),
+    .case-dynamic-content h4:not(:first-child),
+    .case-dynamic-content h5:not(:first-child){
+        margin-top: 48px;
+    }
+
 
 
 
