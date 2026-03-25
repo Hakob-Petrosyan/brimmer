@@ -206,22 +206,23 @@ function initFancybox(){
 
 function initMapScrollEvents() {
     const mapWrapper = document.getElementById('mapWrapper');
-    if (!mapWrapper) return
-    const map = mapWrapper.querySelector('iframe');
+    if (!mapWrapper) return;
 
-    map?.addEventListener('click', (e) => {
-        e.stopPropagation();
+    const map = mapWrapper.querySelector('iframe');
+    if (!map) return;
+
+    map.style.pointerEvents = 'none';
+
+    mapWrapper.addEventListener('click', () => {
         map.style.pointerEvents = 'auto';
     });
 
-    mapWrapper.addEventListener('click', (e) => {
-        if (e.target !== map) {
+    document.addEventListener('click', (e) => {
+        if (!mapWrapper.contains(e.target)) {
             map.style.pointerEvents = 'none';
         }
     });
 }
-
-
 
 function resetScrollBody() {
     const popupOverlay = document.getElementById('popupOverlay');
@@ -234,7 +235,6 @@ function stopScrollBody(mobileMenu) {
     popupOverlay.classList.add('active');
     popupOverlay.focus();
 }
-
 function closePopUp(){
     const popups = document.querySelectorAll('[data-popup]');
     popups.forEach(popup => {
@@ -292,7 +292,6 @@ function closeByOverlay() {
         }
     });
 }
-
 function initCustomSelect(){
     document.querySelectorAll('[data-custom-select]').forEach(select => {
         const trigger = select.querySelector('[data-custom-select-trigger]');
